@@ -7,20 +7,24 @@ set projName counter
 set prModule count
 set taskName inst_count
 
+# Part Name 
+set part xczu2eg-sfva625-1-e
+
 # define the output directory area.
 set outputDir ./$projName
 file mkdir $outputDir
 
 # create project
-create_project -part xcku040-ffva1156-2-e -f $projName $outputDir
+:q
+create_project -part xczu2eg-sfva625-1-e -f $projName $outputDir
 
 # Set project properties
 set obj [current_project]
-set_property -name "board_part" -value "xilinx.com:kcu105:part0:1.5" -objects $obj
+set_property -name "board_part" -value "Interwiser:none:part0:2.0" -objects $obj
 set_property -name "default_lib" -value "xil_defaultlib" -objects $obj
 set_property -name "dsa.accelerator_binary_content" -value "bitstream" -objects $obj
 set_property -name "dsa.accelerator_binary_format" -value "xclbin2" -objects $obj
-set_property -name "dsa.board_id" -value "kcu105" -objects $obj
+set_property -name "dsa.board_id" -value "xczu2eg" -objects $obj
 set_property -name "dsa.description" -value "Vivado generated DSA" -objects $obj
 set_property -name "dsa.dr_bd_base_address" -value "0" -objects $obj
 set_property -name "dsa.emu_dir" -value "emu" -objects $obj
@@ -29,14 +33,14 @@ set_property -name "dsa.flash_offset_address" -value "0" -objects $obj
 set_property -name "dsa.flash_size" -value "1024" -objects $obj
 set_property -name "dsa.host_architecture" -value "x86_64" -objects $obj
 set_property -name "dsa.host_interface" -value "pcie" -objects $obj
-set_property -name "dsa.num_compute_units" -value "60" -objects $obj
+set_property -name "dsa.num_compute_units" -value "96" -objects $obj
 set_property -name "dsa.platform_state" -value "pre_synth" -objects $obj
 set_property -name "dsa.vendor" -value "xilinx" -objects $obj
 set_property -name "dsa.version" -value "0.0" -objects $obj
 
 # setup design sources and constraints
 add_files [ glob top.v count.v]
-add_files -fileset constrs_1 top_io_kcu105.xdc
+add_files -fileset constrs_1 LED_Count.xdc
 
 add_files [ glob $StateMoverPath/IPs/IL/interruption_logic_v1.v ]
 import_files [ glob $StateMoverPath/IPs/IL/il_vio_2.xci ]

@@ -6,7 +6,8 @@ StateMover_PATH = ~/StateMover
 CSR_SIM_PATH = $(StateMover_PATH)/CSR_SIM
 
 # Vivado Installation Path
-VIVADO_PATH = ~/Xilinx/Vivado/2018.3
+# 修改 vivado 路径
+VIVADO_PATH = vivado
 
 # Modelsim Flags
 VSIM_FLAGS = -pli $(CSR_SIM_PATH)/csr_sim.sl -t ps -voptargs=+acc +notimingchecks 

@@ -13,7 +13,9 @@ MODELSIM_INCLUDE_DIR = $(MODELSIM_BIN_DIR)/../include
 #LFLAGS = -shared -E -melf_i386
 
 # 64-bit GCC/G++ compilation flags
-CFLAGS = -c -g -I$(MODELSIM_INCLUDE_DIR) -fPIC
+# CFLAGS = -c -g -I$(MODELSIM_INCLUDE_DIR) -fPIC
+# 使用 iverilog 替代 verilator
+CFLAGS = -c -g -I$(IVERILOG_INCLUDE_DIR) -fPIC
 
 # 64-bit G++ linking flags
 LFLAGS = -shared -Bsymbolic
